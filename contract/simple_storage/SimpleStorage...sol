@@ -1,15 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+import "./types.sol";
+
 contract SimpleStorage {
     // Solidity Basics Types: boolean, uint, int, address, bytes
     uint256 favoriteNumber;
     People[] public people;
-
-    struct People {
-        uint256 favoriteNumber;
-        string name;
-    }
 
     function store(uint256 _favoriteNumber) public {
         favoriteNumber = _favoriteNumber;
