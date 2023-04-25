@@ -24,7 +24,7 @@ contract FundMe {
     }
 
     // withdraw method
-    function withdraw() public {
+    function withdraw() public onlyOwner {
         // Reset the mapping
         for (
             uint256 funderIndex = 0;
@@ -42,5 +42,10 @@ contract FundMe {
             value: address(this).balance
         }("");
         require(callSuccess, "Withdra failed!");
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner is allowed");
+        _;
     }
 }
