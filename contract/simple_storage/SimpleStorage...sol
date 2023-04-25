@@ -8,6 +8,9 @@ contract SimpleStorage {
     uint256 favoriteNumber;
     People[] public people;
 
+    // Mapping Types
+    mapping(string => uint256) public nameToFavoriteNumber;
+
     function store(uint256 _favoriteNumber) public {
         favoriteNumber = _favoriteNumber;
     }
@@ -20,5 +23,6 @@ contract SimpleStorage {
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
         People memory person = People(_favoriteNumber, _name);
         people.push(person);
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 }
