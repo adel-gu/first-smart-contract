@@ -13,6 +13,12 @@ contract FundMe {
     address[] funders;
     mapping(address => uint256) public addressToAmountfunded;
 
+    address internal immutable owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
     // Sending value ==> amount of funding by who ever is calling the fund().
     function fund() public payable {
         require(
