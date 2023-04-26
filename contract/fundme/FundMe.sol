@@ -7,7 +7,7 @@ contract FundMe {
     using PriceConverter for uint256;
 
     // min fund allowed
-    uint256 public minUsd = 50 * 1e18;
+    uint256 public constant MIN_USD = 50 * 1e18;
 
     // Funders, and the mapping to the amount funded by funders.
     address[] funders;
@@ -16,7 +16,7 @@ contract FundMe {
     // Sending value ==> amount of funding by who ever is calling the fund().
     function fund() public payable {
         require(
-            msg.value.PriceConverter() >= minUsd,
+            msg.value.PriceConverter() >= MIN_USD,
             "Didn't send enough eth!"
         );
         funders.push(msg.sender);
