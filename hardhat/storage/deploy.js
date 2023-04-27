@@ -12,6 +12,14 @@ const main = async () => {
     '0x1c16c108df5256e245bd6fc1cf4d09074287b178c46b890d1ce22a0e202bbe97',
     provider,
   );
+
+  // get smart contract abi
+  const abi = fs.readFileSync(
+    './build/SimpleStorage_sol_SimpleStorage.abi',
+    'utf8',
+  );
+  // get smart contract binary code
+  const binary = fs.readFileSync('./build/SimpleStorage_sol_SimpleStorage.bin');
 };
 
 // Invoke main()
