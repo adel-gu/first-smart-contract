@@ -29,7 +29,7 @@ const main = async () => {
   console.log('Deploying, please wait...');
   // Deploy contract
   const contract = await contractFactory.deploy();
-
+  console.log(`contract address: ${contract.address}`);
   // Get favoriteNumber value
   const currentFavoriteNumber = await contract.retrieve();
   console.log(`Current favorite number is:${currentFavoriteNumber.toString()}`);
