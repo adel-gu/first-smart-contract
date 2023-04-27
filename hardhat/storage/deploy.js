@@ -1,5 +1,18 @@
+const ethers = require('ethers');
+const fs = require('fs-extra');
+
 // Deploy smart contract
-const main = async () => {};
+const main = async () => {
+  // Set provider.
+  const provider = new ethers.providers.JsonRpcProvider(
+    'http://127.0.0.1:7545',
+  );
+  // choose a wallet.
+  const wallet = new ethers.Wallet(
+    '0x1c16c108df5256e245bd6fc1cf4d09074287b178c46b890d1ce22a0e202bbe97',
+    provider,
+  );
+};
 
 // Invoke main()
 main()
