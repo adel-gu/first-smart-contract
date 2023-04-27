@@ -19,7 +19,10 @@ const main = async () => {
     'utf8',
   );
   // get smart contract binary code
-  const binary = fs.readFileSync('./build/SimpleStorage_sol_SimpleStorage.bin');
+  const binary = fs.readFileSync(
+    './build/SimpleStorage_sol_SimpleStorage.bin',
+    'utf8',
+  );
 };
 
 // Invoke main()
