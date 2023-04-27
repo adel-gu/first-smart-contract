@@ -26,8 +26,17 @@ const main = async () => {
 
   const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
   console.log('Deploying, please wait...');
+  // Deploy contract
   const contract = await contractFactory.deploy();
-  console.log(contract);
+
+  // Get favoriteNumber value
+  const currentFavoriteNumber = await contract.retrieve();
+  console.log(`Current favorite number is:${currentFavoriteNumber.toString()}`);
+  // update favoriteNumber value
+  const transactionResponse = await contract.store('7');
+  const txReciept = await transactionResponse.wait(1);
+  const updatedFavoriteNumber = await contract.retrieve();
+  console.log(`Updated favorite number is:${updatedFavoriteNumber.toString()}`);
 };
 
 // Invoke main()
