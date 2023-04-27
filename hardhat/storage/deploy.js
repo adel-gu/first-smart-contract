@@ -23,6 +23,11 @@ const main = async () => {
     './build/SimpleStorage_sol_SimpleStorage.bin',
     'utf8',
   );
+
+  const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
+  console.log('Deploying, please wait...');
+  const contract = await contractFactory.deploy();
+  console.log(contract);
 };
 
 // Invoke main()
