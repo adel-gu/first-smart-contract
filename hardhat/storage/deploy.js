@@ -1,18 +1,19 @@
 const ethers = require('ethers');
 const fs = require('fs-extra');
+require('dotenv').config();
 
 // Deploy smart contract
 const main = async () => {
   // Set provider.
-  const provider = new ethers.providers.JsonRpcProvider(
-    'http://127.0.0.1:7545',
-  );
+  const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);
   // choose a wallet.
-  const wallet = new ethers.Wallet(
-    '0x1c16c108df5256e245bd6fc1cf4d09074287b178c46b890d1ce22a0e202bbe97',
-    provider,
+  // const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+  const encryptedJson = fs.readFileSync('./.encryptedkey.json');
+  let wallet = new ethers.Wallet.fromEncryptedJsonSync(
+    encryptedJson,
+    process.env.PRIVATE_KEY_PASSOWRD,
   );
-
+  wallet = await wallet.connect(provider);
   // get smart contract abi
   const abi = fs.readFileSync(
     './build/SimpleStorage_sol_SimpleStorage.abi',
