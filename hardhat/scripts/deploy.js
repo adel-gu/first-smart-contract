@@ -5,6 +5,7 @@ async function main() {
   const simpleStorageFactory = await ethers.getContractFactory('SimpleStorage');
   console.log('Deploying contract please wait...');
   const simpleStorage = await simpleStorageFactory.deploy();
+  console.log(simpleStorage.address);
 }
 
 // main
