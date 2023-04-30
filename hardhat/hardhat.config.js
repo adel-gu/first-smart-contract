@@ -1,4 +1,5 @@
 require('@nomicfoundation/hardhat-toolbox');
+require('./tasks/block-number');
 
 require('dotenv').config();
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -16,7 +17,7 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: `BVR9QKVUT1T44PIZV4IHWA7B5IU8VY6F37`,
+    apiKey: `${ETH_SCAN_API_KEY}`,
   },
   solidity: '0.8.18',
 };
