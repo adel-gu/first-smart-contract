@@ -13,4 +13,11 @@ describe('SimpleStorage', () => {
     const expectedvalue = '0';
     assert.equal(currentValue.toString(), expectedvalue);
   });
+
+  it('Should update favorite number when store is called', async () => {
+    const expectedvalue = '7';
+    await simpleStorage.store(expectedvalue);
+    const UpdatedtValue = await simpleStorage.retrieve();
+    assert.equal(UpdatedtValue.toString(), expectedvalue);
+  });
 });
