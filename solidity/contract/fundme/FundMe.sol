@@ -25,7 +25,7 @@ contract FundMe {
     // Sending value ==> amount of funding by who ever is calling the fund().
     function fund() public payable {
         require(
-            msg.value.PriceConverter() >= MIN_USD,
+            msg.value.getConversionRate() >= MIN_USD,
             "Didn't send enough eth!"
         );
         funders.push(msg.sender);
