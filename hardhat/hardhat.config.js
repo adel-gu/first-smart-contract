@@ -1,6 +1,7 @@
 require('@nomicfoundation/hardhat-toolbox');
 require('./tasks/block-number');
 require('hardhat-gas-reporter');
+require('solidity-coverage');
 
 require('dotenv').config();
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -26,7 +27,7 @@ module.exports = {
     apiKey: `${ETH_SCAN_API_KEY}`,
   },
   gasReporter: {
-    enabled: true,
+    enabled: false,
     outputFile: 'gas-report.md',
     noColors: true,
     currency: 'USD',
